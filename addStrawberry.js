@@ -5,9 +5,7 @@ const container = document.getElementById('sb-container')
 var strawberryCount = 0; // list of numbers that are predetermined 
 
 const marginX = 0;
-const marginY = 10;
-
-// practice session first to 
+const marginY = 10; 
 
 document.addEventListener('keypress', function(event) {
     if (event.code === 'Space') {
