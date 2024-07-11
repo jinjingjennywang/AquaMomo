@@ -69,3 +69,15 @@
     min-height: 30px;
     font-size: 50px;
 }
+
+#audio-controls {
+    margin-top: 30px;
+}
+
+#audio-controls audio{
+    width: 50%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* audio controls are inline by default, need this so u can manipulate it */
+}
