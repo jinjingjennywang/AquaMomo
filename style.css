@@ -16,10 +16,30 @@
     display: flex;
     min-width: 300px;
     min-height: 1000px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
     border: 3px solid salmon;
 }
 
+#fruit-plate{
+    border: 2px solid black;
+    min-height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+}
 
+
+.fruit{
+    /* flex grow specifies how much of the remaining space in the flex container should be assigned to the item */
+    flex-grow: 1;
+    width: 10vw;
+    height: 10vw;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 20px;
+}
 
 
 .buttons{

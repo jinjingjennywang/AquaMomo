@@ -37,6 +37,13 @@ function popFruits(fruitTypes) {
     // ];
 }
 
+// *** CHANGE & ADD FRUITS HERE ***
+
+const initFruitTypes = ['Strawberry.png', 'Banana.png', 'Orange.png'];
+
+const fruits = popFruits(initFruitTypes);
+
+
 
 let currentPhase = 0;
 
@@ -52,3 +59,5 @@ function setFruits(imagePaths) {
         initialContainer.appendChild(fruit);
     })
 }
+
+setFruits(fruits[currentPhase]);
