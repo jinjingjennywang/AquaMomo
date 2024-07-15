@@ -23,22 +23,21 @@
 }
 
 #fruit-plate{
+    display: flex;
     border: 2px solid black;
     min-height: 200px;
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 
 .fruit{
     /* flex grow specifies how much of the remaining space in the flex container should be assigned to the item */
-    flex-grow: 1;
-    width: 10vw;
-    height: 10vw;
+    flex: 1 1 70px;
+    height: 70px;
     background-size: contain;
-    background-position: center;
     background-repeat: no-repeat;
-    margin: 20px;
+    margin: 1.5vw;
 }
 
 
