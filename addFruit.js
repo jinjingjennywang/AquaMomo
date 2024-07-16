@@ -150,3 +150,50 @@ buttons.forEach(button => {
         }
     })
 });
+
+// *** PHASE LOGIC ***
+
+let numberOrder = [1, 3, 5, 2, 10, 4, 2, 4, 1, 3, 10, 5, 4, 5, 1, 3, 10, 2, 1, 10, 3, 2, 5, 4];
+
+const displayNum = document.getElementById('display-num');
+const nextPhaseButton = document.getElementById('next-phase');
+
+let currentIndex = 0;
+let childOrder = [];
+
+displayNum.textContent = numberOrder[currentIndex];
+
+// function to change phase
+
+function changePhase() {
+    if (currentIndex < numberOrder.length) {
+        // add the number of fruits the child put to the childOrder array
+        childOrder.push(endContainer.children.length);
+        
+        // change the fruits to the next phase
+        currentPhase = (currentPhase + 1) % 3;
+
+        // clear all the fruits & add new fruits
+        endContainer.innerHTML = '';
+        setFruits(fruits[currentPhase]);
+        
+
+        // move to the next number in the numberOrder array
+        currentIndex++;
+        displayNum.textContent = numberOrder[currentIndex];
+
+        console.log(childOrder);
+
+       
+        
+
+    } else {
+        displayNum.textContent = 'All done!';
+    }
+}
+
+// use button to trigger changePhase()
+
+nextPhaseButton.addEventListener('click', function() {
+    changePhase();
+});
