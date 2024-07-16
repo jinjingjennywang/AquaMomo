@@ -1,7 +1,20 @@
+body {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
 
+#story-elements{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
 #goldilocks{
-    display: inline-block;
+    display: block;
 }
 
 #instructions{
@@ -11,11 +24,11 @@
     font-size:20px;
 }
 
-
 #fruit-container{
+    margin-left: 2vw;
     display: flex;
-    min-width: 300px;
-    min-height: 1000px;
+    width: 95vw;
+    min-height: 150px;
     flex-direction: row;
     flex-wrap: nowrap;
     margin-bottom: 20px;
@@ -23,26 +36,29 @@
 }
 
 #fruit-plate{
+    margin-left: 2vw;
     display: flex;
-    border: 2px solid black;
-    min-height: 200px;
+    width: 95vw;
+    min-height: 100px;
     flex-direction: row;
     flex-wrap: nowrap;
+    border: 2px solid black;
 }
-
 
 .fruit{
     /* flex grow specifies how much of the remaining space in the flex container should be assigned to the item */
-    flex: 1 1 70px;
-    height: 70px;
+    /* flex: 1 1 70px; */
+    width: 65px;
+    height: 65px;
+    flex: 0 0 65px;
     background-size: contain;
     background-repeat: no-repeat;
-    margin: 1.5vw;
+    margin: 0.5vw;
 }
 
 
 .buttons{
-    margin-top: 80px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-around;
 }
@@ -52,20 +68,21 @@
 }
 
 #display-num {
+    margin-top: 10px;
     text-align: center;
     min-height: 30px;
     font-size: 50px;
 }
 
 #audio-controls {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 #play-instructions{
     display: block;
     margin: auto;
     margin-bottom: 20px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 #audio-controls audio{
