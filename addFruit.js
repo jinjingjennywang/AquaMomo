@@ -48,15 +48,19 @@ const fruits = popFruits(initFruitTypes);
 let currentPhase = 0;
 
 // display fruits in the initial container
+let fruitOrderCount = 0;
 
 function setFruits(imagePaths) {
     // clear container if there are still leftover fruits from last phase
     initialContainer.innerHTML = '';
 
+    
 
     imagePaths.forEach(imagePath => {
         const fruit = document.createElement('div');
         fruit.className = 'fruit';
+        fruit.id = 'fruit' + fruitOrderCount; 
+        fruitOrderCount++;
         fruit.style.backgroundImage = `url(${imagePath})`;
         initialContainer.appendChild(fruit);
     })
@@ -69,9 +73,15 @@ setFruits(fruits[currentPhase]);
 
 function moveFruits() {
     if (initialContainer.children.length > 0) {
-        // select the last fruit in the initial container
-        const fruit = initialContainer.children[initialContainer.children.length - 1];
-        endContainer.appendChild(fruit);
+        // select the FIRST fruit in the initial container
+        const fruit = initialContainer.querySelector('.fruit');
+        console.log(fruit);
+        if (fruit) {
+            const placeHolder = document.createElement('div');
+            placeHolder.className = 'placeholder';
+            initialContainer.replaceChild(placeHolder, fruit);
+            endContainer.appendChild(fruit);
+        }
     }
 }
 
@@ -95,10 +105,18 @@ moveFruitButton.addEventListener('click', function() {
 
 // remove fruit from end container and put back into initial container
 
+// first need to be able to find the last placeHolder
+
+function findLastPH() {
+    const placeHolders = initialContainer.querySelectorAll('.placeholder');
+    return placeHolders[placeHolders.length - 1];
+}
+
 function removeFruits() {
     if (endContainer.children.length > 0) {
-        const fruit = endContainer.children[endContainer.children.length - 1];
-        initialContainer.appendChild(fruit);
+        const fruit = endContainer.querySelector('.fruit');
+        const placeHolder = findLastPH();
+        initialContainer.replaceChild(fruit, placeHolder);
     }
 
 }
@@ -115,8 +133,7 @@ removeFruitButton.addEventListener('click', function() {
 
 function clearFruits() {
     while (endContainer.children.length > 0) {
-        const fruit = endContainer.children[0];
-        initialContainer.appendChild(fruit);
+        removeFruits();
     }
 }
 
