@@ -37,8 +37,10 @@ body {
 }
 
 #fruit-plate{
-    margin-left: 2vw;
-    display: flex;
+    margin-left: 1.8vw;
+    display: grid;
+    grid-template-columns: repeat(15, 6.3vw);
+    grid-template-rows: repeat(2, 60px);
     width: 95vw;
     min-height: 100px;
     flex-direction: row;
@@ -93,4 +95,16 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block; /* audio controls are inline by default, need this so u can manipulate it */
+}
+
+
+/* practice phase styling */
+
+.cookie {
+    width: 45px;
+    height: 45px;
+    flex: 0 0 45px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0.5vw; 
 }
