@@ -3,7 +3,12 @@
 const initialContainer = document.getElementById('fruit-container');
 const endContainer = document.getElementById('fruit-plate');
 
+// click screen bc google autoplay policy is a bit dumb
+document.getElementById('instructions').click();
+
+
 // ui changer that changes text based on mode
+
 
 function uiChanger() {
     if (!practice) {
@@ -263,24 +268,32 @@ nextPhaseButton.addEventListener('click', function() {
     changePhase();
 });
 
-// save data
-function saveData(name, data){
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'write_data_file.php');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({filename: name, filedata: data}));
+//get SubID
+function savefilename(){
+    const queryString = window.location.search;
+  console.log(queryString);
+  const urlParams = new URLSearchParams(queryString);
+  const subjectID = urlParams.get('a1');
+  return subjectID;
   }
-
-  function download_csv(name, data) {
-    var csv = data;
-    console.log(csv);
-    var hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-    //hiddenElement.target = '_blank';
-    hiddenElement.download = name;
-    hiddenElement.click();
-  }
-
+  // save data
+  function saveData(name, data){
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'write_data_file.php');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({filename: name, filedata: data}));
+    }
+  
+    function download_csv(name, data) {
+      var csv = data;
+      console.log(csv);
+      var hiddenElement = document.createElement('a');
+      hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+      //hiddenElement.target = '_blank';
+      hiddenElement.download = name;
+      hiddenElement.click();
+    }
+  
 
   function makeData() {
     // put the data in the value key pairs

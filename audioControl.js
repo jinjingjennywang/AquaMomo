@@ -18,9 +18,11 @@ const audioTrials = ['mp3/3orange.mp3', 'mp3/5strawberry.mp3', 'mp3/2banana.mp3'
 
 
 // play the audio as soon as the page loads, commented out for dev
-document.getElementById('instructions').click();
+
 
 window.addEventListener('load', function() {
+   
+
     // play the p1cookie.mp3 audio
     audioStartPrac.play();
     audioStartPrac.addEventListener('ended', function() {
@@ -31,6 +33,25 @@ window.addEventListener('load', function() {
     nextPhaseCounter++;
 });
 
+
+
+const instructionsElement = document.getElementById('instructions');
+
+// Function to simulate a button click
+function simulateButtonClick() {
+    // Create a new event
+    const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+    });
+
+    // Dispatch the event on the button element
+    instructionsElement.dispatchEvent(event);
+}
+
+// Simulate the button click after a delay
+setTimeout(simulateButtonClick, 1000);
 
 // listen again function and button 
 
@@ -76,12 +97,10 @@ nextPhaseButtonAudio.addEventListener('click', function() {
 
         lastAudio = audioPrac2;
     } else if (nextPhaseCounter === 2) {
-        audioStartTrial.play();
-        audioStartTrial.addEventListener('ended', function() { 
-            audioTrial1.play();
+        audioTrial1.play();
 
-            lastAudio = audioTrial1;
-        });
+        lastAudio = audioTrial1;
+    
     } else if (nextPhaseCounter === 26) {
         audioEnd.play();
     } else{
