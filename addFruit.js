@@ -208,10 +208,11 @@ buttons.forEach(button => {
 
 // *** PHASE LOGIC ***
 
-let numberOrder = ['practice', 1, 3, 5, 2, 10, 4, 2, 4, 1, 3, 10, 5, 4, 5, 1, 3, 10, 2, 1, 10, 3, 2, 5, 4];
+let numberOrder = [ 'practice', 1, 3, 5, 2, 10, 4, 2, 4, 1, 3, 10, 5, 4, 5, 1, 3, 10, 2, 1, 10, 3, 2, 5, 4];
 
 const displayNum = document.getElementById('display-num');
 const nextPhaseButton = document.getElementById('next-phase');
+
 
 let currentIndex = 0;
 let childOrder = [];
@@ -226,26 +227,28 @@ function changePhase() {
     if (!practice) {
         if (currentIndex < numberOrder.length - 1) {
             // add the number of fruits the child put to the childOrder array
-            childOrder.push(endContainer.children.length);
-            
+            // check that the class of the objects inside the container are fruit
+            initialChildren = initialContainer.querySelectorAll('.fruit');
+
+            if (initialChildren.length > 0) {
+                childOrder.push(endContainer.children.length);
+            }
             // change the fruits to the next phase
             currentPhase = (currentPhase + 1) % 3;
-
-            // clear all the fruits & add new fruits
-            endContainer.innerHTML = '';
-            setFruits(fruits[currentPhase]);
             
-
             // move to the next number in the numberOrder array
             currentIndex++;
             displayNum.textContent = numberOrder[currentIndex];
 
             console.log(childOrder);
 
-        
+            // clear all the fruits & add new fruits
+            endContainer.innerHTML = '';
+            setFruits(fruits[currentPhase]);
             
 
         } else {
+            childOrder.push(endContainer.children.length);
             displayNum.textContent = 'All done!';
             download_csv('test1.csv', makeData());
         }

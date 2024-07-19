@@ -6,6 +6,7 @@ const endContainerCookie = document.getElementById('fruit-plate');
 
 let practiceCount = 0;
 
+document.getElementById('instructions').click();
 
 if (practice) {
     // edit instructions & button text
@@ -115,12 +116,11 @@ if (practice) {
     const phaseCookieButton = document.getElementById('next-phase');
     phaseCookieButton.addEventListener('click', function() {
 
-
         practiceCount++;
+        
         if (practiceCount < 2) {
             endContainerCookie.innerHTML = '';
             setCookies(foodCookies[practiceCount]);
-        
         } else if (practiceCount == 2) {
             practice = false;
             initialContainerCookie.innerHTML = '';
