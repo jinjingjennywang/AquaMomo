@@ -102,7 +102,7 @@ nextPhaseButtonAudio.addEventListener('click', function() {
         lastAudio = audioTrial1;
     
     } else if (nextPhaseCounter === 26) {
-        audioEnd.play();
+        // got rid of all done audio, playing through lookit 
     } else{
         playNextTrial();
     }
