@@ -25,16 +25,21 @@ window.addEventListener('load', function() {
     audioStartPrac.play();
     audioStartPrac.addEventListener('ended', function() {
         audioPrac1.play();
+
+        lastAudio = audioPrac1;
     });
     nextPhaseCounter++;
 });
 
 
 // listen again function and button 
+
+let lastAudio;
+
 const playButton = document.getElementById('play-instructions');
 
 playButton.addEventListener('click', function() {
-    audio.play();
+    lastAudio.play();
 });
 
 // everytime the phase button is pressed an audio has to play that corresponds to the fruit and the number
@@ -53,6 +58,8 @@ function playNextTrial() {
     if (nextPhaseCounter < audioTrials.length + 3) {
         audioTrialPlayer.src = audioTrials[nextPhaseCounter - 3];
         audioTrialPlayer.play();
+
+        lastAudio = audioTrialPlayer;
     }
 }
 
@@ -66,10 +73,14 @@ nextPhaseButtonAudio.addEventListener('click', function() {
     } else if (nextPhaseCounter === 1) {
         // play the p2cookie.mp3 audio
         audioPrac2.play();
+
+        lastAudio = audioPrac2;
     } else if (nextPhaseCounter === 2) {
         audioStartTrial.play();
         audioStartTrial.addEventListener('ended', function() { 
             audioTrial1.play();
+
+            lastAudio = audioTrial1;
         });
     } else if (nextPhaseCounter === 26) {
         audioEnd.play();

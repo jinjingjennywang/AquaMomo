@@ -92,6 +92,8 @@ if (practice) {
     clearCookieButton.addEventListener('click', function() {
             clearFood();
     });
+
+    
     
     // diff approach to clear logic
 
