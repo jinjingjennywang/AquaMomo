@@ -255,7 +255,12 @@ function changePhase() {
         } else {
             childOrder.push(endContainer.children.length);
             displayNum.textContent = 'All done!';
-            download_csv('test1.csv', makeData());
+
+            let nameData;
+
+            nameData = generateID(6) + '.csv';
+
+            download_csv(nameData, makeData());
         }
     } else {
         // STUFFS left off here but basically need to figure out the phasing with practice mode
@@ -294,8 +299,22 @@ function savefilename(){
       hiddenElement.click();
     }
   
+// create random ID
+
+function generateID(length) {
+    const alphabetChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let result = '';
+    let randomIndex;
+    for (i = 0; i < length; i++) {
+        randomIndex = Math.floor(Math.random() * alphabetChars.length);
+        result += alphabetChars[randomIndex];
+    }
+    return result;
+}
+
 
   function makeData() {
+    
     // put the data in the value key pairs
     let childDataCsv = childOrder.join(',');
 
