@@ -213,7 +213,7 @@ buttons.forEach(button => {
 
 // *** PHASE LOGIC ***
 
-let numberOrder = [ 'practice', 1, 3, 5, 2, 10, 4, 2, 4, 1, 3, 10, 5, 4, 5, 1, 3, 10, 2, 1, 10, 3, 2, 5, 4];
+let numberOrder = [ 'practice', 1, 3, 5, 2, 10, 4, 2, 4, 1, 3, 10, 5, 4, 5, 1, 3, 10, 2];
 
 const displayNum = document.getElementById('display-num');
 const nextPhaseButton = document.getElementById('next-phase');
