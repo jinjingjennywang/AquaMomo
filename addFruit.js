@@ -6,6 +6,12 @@ const endContainer = document.getElementById('fruit-plate');
 // click screen bc google autoplay policy is a bit dumb
 document.getElementById('instructions').click();
 
+// get participantID from start page url
+
+const startURL = sessionStorage.getItem('subjectURL');
+
+const participantID = startURL.split('?a1=')[1];
+
 
 // ui changer that changes text based on mode
 
@@ -258,7 +264,7 @@ function changePhase() {
 
             let nameData;
 
-            nameData = generateID(6) + '.csv';
+            nameData = participantID + '.csv';
 
             download_csv(nameData, makeData());
         }
@@ -299,7 +305,7 @@ function savefilename(){
       hiddenElement.click();
     }
   
-// create random ID
+// create random ID - DEPRECATED, using id from LOOKIT 
 
 function generateID(length) {
     const alphabetChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
