@@ -58,7 +58,7 @@ function popFruits(fruitTypes) {
     //     }
     // });
 
-    // RETURNS EX: 
+    // RETURNS EX:
     // let fruits = [
     //     ['Strawberry.png'] x 15,
     //     ['Banana.png'] x 15,
@@ -80,7 +80,7 @@ function setFruits(imagePaths) {
     // clear container if there are still leftover fruits from last phase
     initialContainer.innerHTML = '';
 
-    
+
 
     imagePaths.forEach(imagePath => {
         const fruit = document.createElement('div');
@@ -105,7 +105,7 @@ function checkPractice() {
 let checkInterval = setInterval(checkPractice, 1000);
 
 
-// movement logic 
+// movement logic
 // function to move fruits from initial container to end container
 
 
@@ -242,7 +242,7 @@ function changePhase() {
             }
             // change the fruits to the next phase
             currentPhase = (currentPhase + 1) % 3;
-            
+
             // move to the next number in the numberOrder array
             currentIndex++;
             displayNum.textContent = numberOrder[currentIndex];
@@ -252,17 +252,17 @@ function changePhase() {
             // clear all the fruits & add new fruits
             endContainer.innerHTML = '';
             setFruits(fruits[currentPhase]);
-            
+
 
         } else {
             childOrder.push(endContainer.children.length);
-            displayNum.textContent = 'All done!';
+            displayNum.textContent = 'All done here! Please close this window and return to Children Helping Science.';
 
             let nameData;
 
-            nameData = participantID + '.csv';
+            nameData = savefilename();
 
-            download_csv(nameData, makeData());
+            saveData(nameData, makeData());
         }
     } else {
         // STUFFS left off here but basically need to figure out the phasing with practice mode
@@ -290,7 +290,7 @@ function savefilename(){
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send(JSON.stringify({filename: name, filedata: data}));
     }
-  
+
     function download_csv(name, data) {
       var csv = data;
       console.log(csv);
@@ -300,8 +300,8 @@ function savefilename(){
       hiddenElement.download = name;
       hiddenElement.click();
     }
-  
-// create random ID - DEPRECATED, using id from LOOKIT 
+
+// create random ID - DEPRECATED, using id from LOOKIT
 
 // function generateID(length) {
 //     const alphabetChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -316,11 +316,9 @@ function savefilename(){
 
 
   function makeData() {
-    
+
     // put the data in the value key pairs
     let childDataCsv = childOrder.join(',');
 
     return childDataCsv;
   }
-
-
